@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please confirm your email address</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <a href="/" class="back-btn">&#8592; Back to Login</a>
+    <div class="form-container" style="text-align:center;max-width:500px;">
+    <h2>Please confirm your email address</h2>
+    <div style="color:#888;font-size:1em;margin-bottom:18px;">by <b>TRI</b></div>
+        <ul style="text-align:left; margin: 0 auto 24px auto; max-width: 400px; color: #fff;">
+            <li>We have sent a confirmation link to: <b><%= email %></b></li>
+            <li>Confirmation email may take up to 5 minutes to appear in your inbox</li>
+            <li>Please confirm through the link in the email to create your account</li>
+        </ul>
+        <form action="/resend-email" method="post">
+            <input type="hidden" name="email" value="<%= email %>">
+            <button type="submit" class="submit-btn">Resend email</button>
+        </form>
+    </div>
+</body>
+</html>

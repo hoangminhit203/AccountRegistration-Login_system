@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <div class="form-container">
+    <h2>Login</h2>
+    <div style="color:#888;font-size:1em;margin-bottom:18px;">by <b>TRI</b></div>
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div style="color:#ff6b6b; background:rgba(255,0,0,0.08); border-radius:5px; padding:8px 12px; margin-bottom:16px; text-align:center; font-weight:500;">
+                <%= error %>
+            </div>
+        <% } %>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="password" required>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Signup</a>.</p>
+    </div>
+
+</body>
+</html>

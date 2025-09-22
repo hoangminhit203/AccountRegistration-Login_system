@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <a href="/" class="back-btn">&#8592; Back to Login</a>
+    <h2>Create Account</h2>
+    <div style="color:#888;font-size:1em;margin-bottom:18px;">by <b>TRI</b></div>
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div style="color:#ff6b6b; background:rgba(255,0,0,0.08); border-radius:5px; padding:8px 12px; margin-bottom:16px; text-align:center; font-weight:500;">
+                        <%= error %>
+                    </div>
+                <% } %>
+    <form action="/signup" method="post" onsubmit="return validatePasswords()">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required autocomplete="off">
+            </div>
+            <div class="form-group" style="position:relative;">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required style="padding-right:36px;">
+                <button type="button" onclick="togglePassword('password', this)" style="position:absolute; right:8px; top:32px; background:none; border:none; cursor:pointer; color:#aaa; font-size:1.1em;">
+                    <span id="eye-password">&#128065;</span>
+                </button>
+            </div>
+            <div class="form-group" style="position:relative;">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required style="padding-right:36px;">
+                <button type="button" onclick="togglePassword('confirmPassword', this)" style="position:absolute; right:8px; top:32px; background:none; border:none; cursor:pointer; color:#aaa; font-size:1.1em;">
+                    <span id="eye-confirmPassword">&#128065;</span>
+                </button>
+            </div>
+            <button type="submit" class="submit-btn">Create Account</button>
+        </form>
+    </div>
+
+
+<script>
+function togglePassword(fieldId, btn) {
+    const input = document.getElementById(fieldId);
+    const eye = btn.querySelector('span');
+    if (input.type === 'password') {
+        input.type = 'text';
+        eye.textContent = '\u{1F441}\u{FE0E}'; // eye with text
+    } else {
+        input.type = 'password';
+        eye.textContent = '\u{1F441}'; // eye
+    }
+}
+
+function validatePasswords() {
+    const pw = document.getElementById('password').value;
+    const cpw = document.getElementById('confirmPassword').value;
+    if (pw !== cpw) {
+        alert('Passwords do not match!');
+        document.getElementById('confirmPassword').focus();
+        return false;
+    }
+    return true;
+}
+</script>
+</body>
+
+</html>
